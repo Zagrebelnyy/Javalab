@@ -1,0 +1,99 @@
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.Random;
+
+public class LabFirst {
+    public static void main(String args[]) {
+        //1-ый Вариант************************************
+        int arr[] = {5, 2, 6, 7, 3, 2, 5, 4};
+        int sum = 0;
+        int i;
+        for (i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        System.out.println(sum);
+
+        sum = 0;
+        i = 0;
+        while (i < arr.length) {
+            sum += arr[i];
+            i++;
+        }
+        System.out.println(sum);
+
+        sum = 0;
+        i = 0;
+        do {
+            sum += arr[i];
+            i++;
+        }
+        while (i < arr.length);
+        System.out.println(sum);
+
+
+        //2-й Вариант************************************
+        System.out.println("Все аргументы командной строки:");
+        for (int index = 0; index < args.length; index++) {
+            System.out.println(args[index]);
+        }
+
+
+        //3-й Вариант************************************
+        System.out.println("Первые 10 чисел гармонического ряда: ");
+        double a = 1;
+        double k = 1;//k-тый член ряда
+        double res;
+        while (k <= 10) {
+            res = a / k;
+            k++;
+            System.out.println(res);
+        }
+
+
+        //4-й Вариант************************************
+        Scanner sizeArr = new Scanner(System.in);
+        System.out.println("Введите размер массива: ");
+        int size = sizeArr.nextInt();
+        int array[] = new int[size];
+        Random rand = new Random();
+        for (int index = 0; index < array.length; index++) {
+            array[index] = rand.nextInt(100);
+        }
+
+        for (int index = 0; index < array.length; index++) {
+            System.out.println(array[index]);
+        }
+
+        for (int index = 0; index < array.length; index++) {
+            for (int j = 0; j < (array.length - 1); j++) {
+                if (array[j] > array[j + 1]) {
+                    int container = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = container;
+                } else {
+                    continue;
+                }
+            }
+        }
+        Arrays.sort(array);
+        System.out.print("Отсортированный массив:\n");
+        for (int index = 0; index < array.length; index++) {
+            System.out.println(array[index]);
+        }
+
+        //5-й Вариант************************************
+        Scanner in = new Scanner(System.in);
+        System.out.print("Введите число для вычисления его факториала: ");
+        int num = in.nextInt();
+        System.out.print(factorial(num));
+    }
+
+    public static int factorial(int number) {
+        int container = number;
+        while (number > 1) {
+            container *= number - 1;
+            number--;
+        }
+        return container;
+    }
+}
