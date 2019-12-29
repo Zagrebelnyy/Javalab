@@ -1,0 +1,46 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class CollectionApp {
+    public static void main(String[] args) {
+        ArrayList<String> people = new ArrayList<String>();
+        people.add("Tom");
+        people.add("Bob");
+        people.add("Alice");
+        people.add("Alex");
+        System.out.println(people.get(0));
+        System.out.println("Size of Array people: " + people.size());
+        for (String person : people) {
+            System.out.println(person);
+        }
+        if(people.contains("Alex")){
+            System.out.println("Hello, Alex, f**k you!");
+            people.remove("Alex");
+            for (String person : people) {
+                System.out.println(person);
+            }
+        }
+        else{
+            System.out.println("I miss you, Alex :( ");
+        }
+
+        System.out.println("\n/********************************************/\n");
+
+        LinkedList <String> planet =  new LinkedList<>();
+        planet.add("Mars");
+        planet.add("Earth");
+        planet.addFirst("Mercury");
+        planet.addLast("Pluto");
+        for(String obj:planet){
+            System.out.println(obj);
+        }
+        if(planet.contains("Pluto")){
+            System.out.println("Hello, Pluto, you are not a planet. Go Away!");
+            planet.remove("Pluto");
+        }
+        else{
+            System.out.println("Anyway, it's not a planet. ");
+        }
+
+    }
+}
