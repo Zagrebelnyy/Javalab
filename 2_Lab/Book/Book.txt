@@ -1,0 +1,42 @@
+public class Book {
+    private String name;
+    private String author;
+    private int year;
+    public Book(String name,String author,int year){
+        this.name=name;
+        this.author=author;
+        this.year=year;
+    }
+    public String getName() {
+        return name;
+    }
+    public String getAuthor() {
+        return author;
+    }
+    public int getYear() {
+        return year;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+    public void setYear(int year) {
+        this.year = year;
+    }
+    public String toString(){
+        return this.name + ", author " + this.author + ", year " + this.year;
+    }
+}
+class TestBook{
+    public static void  main(String[] args){
+        Book book1=new Book("Отцы и дети","Тургенев И.С", 1861);
+        System.out.println(book1);
+        Book book2=new Book("Война и мир","Толстой Л.Н.", 1869);
+        book2.setYear(1873);
+        System.out.println(book2);
+
+
+    }
+}
