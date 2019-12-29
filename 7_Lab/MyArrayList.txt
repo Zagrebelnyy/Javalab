@@ -1,0 +1,108 @@
+class NewArrayList<T> {
+    private int size = 0;
+    private T[] arrayList;
+    private int pointer = 0;
+
+    public NewArrayList() { this.arrayList = (T[]) new Object[size]; }
+
+    public NewArrayList(int size) {
+        this.arrayList = (T[]) new Object[size];
+    }
+
+    public NewArrayList(T[] array) {
+        this.arrayList = (T[]) new Object[array.length];
+        for (int i = 0; i < array.length; i++) {
+            this.arrayList[i] = array[i];
+        }
+    }
+
+    public void add(T elem) {
+        if (this.pointer == this.size) {
+            this.size++;
+            T[] newArr = (T[]) new Object[this.size];
+            for (int i = 0; i < this.size; i++) {
+                if (i < (this.size - 1)) {
+                    newArr[i] = this.arrayList[i];
+                } else if (i == this.size - 1) {
+                    newArr[i] = elem;
+                }
+            }
+            this.arrayList = newArr;
+        } else if (pointer == (this.arrayList.length - 1)) {
+            arrayList[this.pointer] = elem;
+        }
+        this.pointer++;
+    }
+
+    public void remove(int indexRemove) {
+        this.size--;
+        T[] newArr = (T[]) new Object[this.size];
+        int index = 0;
+        for (int i = 0; i <= this.size; i++) {
+            if (i != indexRemove) {
+                newArr[index] = arrayList[i];
+                index++;
+            }
+        }
+        this.arrayList = newArr;
+        this.pointer--;
+    }
+
+    public T get(int index) {
+        if (index > this.size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size " + size);
+        }
+        return this.arrayList[index];
+    }
+
+    public void set(int index, T elem) {
+        this.arrayList[index] = elem;
+    }
+
+    public boolean contains(T elem) {
+        for (int i = 0; i < this.size; i++) {
+            if (this.arrayList[i] == elem) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    int indexOf(T elem) {
+        for (int i = 0; i < this.size; i++) {
+            if (this.arrayList[i] == elem) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int size() {
+        return this.size;
+    }
+
+}
+
+class MyArrayList {
+    public static void main(String[] args) {
+        NewArrayList<Integer> obj = new NewArrayList<>();
+        obj.add(1);
+        obj.add(2);
+        obj.add(3);
+        obj.add(4);
+        obj.remove(2);
+        for (int i = 0; i < obj.size(); i++) {
+            System.out.println(obj.get(i));
+        }
+        System.out.println("\n/************************************/\n");
+        obj.set(1, 22);
+        for (int i = 0; i < obj.size(); i++) {
+            System.out.println(obj.get(i));
+        }
+        if (obj.contains(4)) {
+            System.out.println("Yes!");
+        } else {
+            System.out.println("No!");
+        }
+    }
+}
